@@ -1,0 +1,70 @@
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: utf-8
+    max-http-form-post-size: 50MB
+  max-http-request-header-size: 2MB
+spring:
+  profiles:
+    active: @profileActive@
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  output:
+    ansi:
+      enabled: always
+
+
+
+easy-query:
+  # 启用
+  enable: true
+  # 对象属性和数据库表和列名的转换器
+  # default（默认）：userAge -> userAge
+  # underlined（下划线转换）：userAge -> user_age
+  # lower_camel_case（小驼峰）：userAge -> userAge
+  # upper_camel_case（大驼峰）：userAge -> UserAge
+  # upper_underlined（全大写 下划线）：userAge -> USER_AGE
+  name-conversion: underlined
+  # 是否启用追踪，true（启用）；false（禁用），如果启用追踪，maven需要引入spring-boot-starter-aop
+  default-track: true
+  # 如果执行物理删除delete语句将会报错 如果改为false,后续可以通过allowDeleteStatment来允许
+  deleteThrow: false
+  # 打印sql显示(需要框架默认有日志以 log.info打印)
+  print-sql: true
+  # sqlNativeSegment输入和格式化无需处理单引号会自动处理为双单引号
+  keep-native-style: true
+  # entity映射到dto/vo使用属性匹配模式
+  # column_only：默认，表示实体的对应的属性名和映射对象的属性名相同能映射
+  # property_only：表示实体的对应的列名和映射对象的列名相同能映射
+  # column_and_property：表示先使用实体对应的列名匹配如果无法映射则使用属性名进行匹配
+  # property_first：表示实体的对应的属性名和映射对象的属性名相同能映射,和PROPERTY_ONLY的区别就是如果是函数式片段没有property通过alias来匹配
+  mapping-strategy: property_first
+
+
+
+
+# knife4j的增强配置
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+# springdoc-openapi项目配置
+springdoc:
+  default-flat-param-object: true
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: '人脸'
+      paths-to-match: '/**'
+      packages-to-scan: com.loongdot.face.api.controller
+
+
+logging:
+  level:
+    com.easy.query.core: info

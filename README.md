@@ -28,11 +28,11 @@ PS：因为虹软的免费版功能限制比较少，所以本项目直接适配
 
 免费调用次数：
 
-![baidu-04](https://github.com/yushuishu/optional-face-recognition/assets/50919172/0964bbd7-e527-4a03-b301-e475d7e88a85)
+![baidu-04](https://github.com/coderafeng/optional-face-recognition/assets/50919172/0964bbd7-e527-4a03-b301-e475d7e88a85)
 
 购买价格：
 
-![baidu-03](https://github.com/yushuishu/optional-face-recognition/assets/50919172/68a5afc2-3fb7-4a3a-a79f-36315562d29c)
+![baidu-03](https://github.com/coderafeng/optional-face-recognition/assets/50919172/68a5afc2-3fb7-4a3a-a79f-36315562d29c)
 
 <br>
 
@@ -40,18 +40,18 @@ PS：因为虹软的免费版功能限制比较少，所以本项目直接适配
 
 百度离线SDK购买（普通方式）：
 
-![badiu-02](https://github.com/yushuishu/optional-face-recognition/assets/50919172/f8192839-1c59-466b-808f-ec02c60f3dbc)
+![badiu-02](https://github.com/coderafeng/optional-face-recognition/assets/50919172/f8192839-1c59-466b-808f-ec02c60f3dbc)
 
 百度离线SDK购买（活动方式）：https://cloud.baidu.com/campaign/PromotionActivity/index.html?track=navigationA
 
-![baidu-01](https://github.com/yushuishu/optional-face-recognition/assets/50919172/a20df648-3984-4fd1-bb20-531c3461c7fb)
+![baidu-01](https://github.com/coderafeng/optional-face-recognition/assets/50919172/a20df648-3984-4fd1-bb20-531c3461c7fb)
 
 
 #### 虹软
 
 https://ai.arcsoft.com.cn/manual/docs#/211
 
-![hongruan-01](https://github.com/yushuishu/optional-face-recognition/assets/50919172/0a760eec-6f6e-4970-bf77-9095ea15ba94)
+![hongruan-01](https://github.com/coderafeng/optional-face-recognition/assets/50919172/0a760eec-6f6e-4970-bf77-9095ea15ba94)
 
 
 #### 旷视

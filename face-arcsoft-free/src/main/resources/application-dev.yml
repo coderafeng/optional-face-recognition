@@ -1,0 +1,61 @@
+face:
+  #人脸图片本地保存路径
+  file-path: D:/face
+  # 人脸识别匹配模式
+  #   1：优先匹配当前组，未匹配成功，再匹配其它组【默认】
+  #   2；不区分组，匹配所有；
+  #   3：只匹配当前组
+  match-type: 1
+  # 匹配最小分数【0-100】，默认80
+  match-min-score: 80
+  # 质量最小分数【0-100】，默认70
+  # 图片整体质量分数，
+  quality-min-score: 70
+  # 与其它人脸匹配最大分数【0-100】，默认70
+  # 绑定注册时，如果与已注册的人脸样本匹配，超过此分数，认为是同一个人已绑定，将提示注册失败。
+  with-other-match-max-score: 70
+  # 模糊度【0-100】，0是最清晰，100是最模糊。默认60
+  # 绑定注册时，如果图片质量不清晰，超过此分数，提示图片太模糊，请重新上传。
+  blur: 60
+  # 虹软SDK
+  # Windows：D:/itlike/workSpace/Java/face/face-recognition/face-arcsoft-free/src/main/resources/lib/sdk/ArcSoft_ArcFace_Java_Windows_x64_V3.0/libs/WIN64
+  # Linux：/opt/face-recognition/face-arcsoft-free/lib/sdk/ArcSoft_ArcFace_Java_Linux_x64_V3.0/libs/LINUX64
+  sdk-path: D:/itlike/workSpace/Java/face/face-recognition/face-arcsoft-free/src/main/resources/lib/sdk/ArcSoft_ArcFace_Java_Windows_x64_V3.0/libs/WIN64
+  # 3j8upsbqbrcZpqgvbKFZHDYJkzYk74h65G5KxJ3WqBRT
+  app-id: 3j8upsbqbrcZpqgvbKFZHDYJkzYk74h65G5KxJ3WqBRT
+  # Windows：A73GwQDShHH5vh5EJcEg8cnuqL82Bv2d6cZZwVerrvTW
+  # Linux：A73GwQDShHH5vh5EJcEg8cnuhDYrkTV2bdTtnT3kZGFe
+  sdk-key: A73GwQDShHH5vh5EJcEg8cnuqL82Bv2d6cZZwVerrvTW
+  # 人脸识别，引擎池大小，默认5
+  sdk-detect-pool-size: 5
+  # 人脸比对，引擎池大小，默认5
+  sdk-compare-pool-size: 5
+
+
+spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/face_dev?useUnicode=true&characterEncoding=utf8
+    username: postgres
+    password: 123456
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-timeout: 60000
+      idle-timeout: 300000
+      max-lifetime: 350000
+      maximum-pool-size: 20
+      minimum-idle: 10
+
+easy-query:
+  # 使用的数据库
+  # mysql、mssql、pgsql、H2、dameng、kingbase_es、mssql_row_number、oracle、sqlite、clickhouse、gauss_db、db2
+  database: pgsql
+  defaultSchema: public
+
+
+# knife4j的增强配置
+knife4j:
+  # 是否生产环境，是否可以访问
+  #   false：可以访问接口文档
+  #   true：禁止访问接口文档
+  production: false

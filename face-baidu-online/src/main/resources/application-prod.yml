@@ -1,0 +1,46 @@
+face:
+  #人脸图片本地保存路径
+  file-path: D:/face
+  # 人脸识别匹配模式（1=优先匹配当前组，未匹配成功，再匹配其它组【默认】；2=不区分组，匹配所有；3=只匹配当前组）
+  match-type: 1
+  # 匹配最小分数【0-100】，默认80
+  match-min-score: 80
+  # 质量最小分数【0-100】，默认70
+  # 图片整体质量分数，
+  quality-min-score: 70
+  # 与其它人脸匹配最大分数【0-100】，默认70
+  # 绑定注册时，如果与已注册的人脸样本匹配，超过此分数，认为是同一个人已绑定，将提示注册失败。
+  with-other-match-max-score: 70
+  # 模糊度【0-100】，0是最清晰，100是最模糊。默认60
+  # 绑定注册时，如果图片质量不清晰，超过此分数，提示图片质量太差，请重新上传。
+  blur: 60
+  # 百度应用key
+  api-key: uftvVlqW7XQDvyAqEz4Mp6q3
+  # 百度应用id
+  app-id: 25209037
+  # 百度应用秘钥
+  secret-key: SoCpMnb5LumIHz0OefCx8K1DmBEibHDG
+
+
+spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/face_dev?useUnicode=true&characterEncoding=utf8
+    username: postgres
+    password: 123456
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-timeout: 60000
+      idle-timeout: 300000
+      max-lifetime: 350000
+      maximum-pool-size: 20
+      minimum-idle: 10
+
+easy-query:
+  #支持的数据库：mysql、pgsql、dameng
+  database: pgsql
+  defaultSchema: public
+
+
+
+

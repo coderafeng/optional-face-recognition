@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 定义日志的根目录 -->
+    <property name="LOG_HOME" value="./logs" />
+
+    <!--把日志输出到控制台-->
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <Target>System.out</Target>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %p [%t] [%logger{0}][%M:%L]  - %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件。-->
+    <appender name="out"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <append>true</append>
+        <file>${LOG_HOME}/face.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %p [%t] [%logger{0}][%M:%L]  - %m%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/face.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>15</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- 时间滚动输出 level为 mybatis debug 日志 只有debug模式mybatis 日志才会 所以必须开启debug    -->
+    <appender name="MYBATIS_DEBUG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 正在记录的日志文件的路径及文件名 -->
+        <file>${LOG_HOME}/face_mybatis_sql.log</file>
+        <!--日志文件输出格式-->
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %p [%t] [%logger{0}][%M:%L]  - %m%n</pattern>
+            <charset>UTF-8</charset> <!-- 此处设置字符集 -->
+        </encoder>
+        <!-- 日志记录器的滚动策略，按日期，按大小记录 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/face_mybatis_sql.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <!--日志文件保留天数-->
+            <maxHistory>15</maxHistory>
+        </rollingPolicy>
+        <!-- 此日志文件只记录DEBUG级别的 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>DEBUG</level>
+        </filter>
+    </appender>
+
+
+    <!--myibatis log configure -->
+    <logger name="com.baomidou.mybatisplus" additivity="false" level="debug">
+        <appender-ref ref="MYBATIS_DEBUG_FILE" />
+        <appender-ref ref="stdout" />
+    </logger>
+    <logger name="com.loongdot.face.openvisual.server.mapper" additivity="false" level="debug">
+        <appender-ref ref="MYBATIS_DEBUG_FILE" />
+        <appender-ref ref="stdout" />
+    </logger>
+
+    <!--减少log4jdbc输出的比如连接、执行时间、参数绑定、结果等信息-->
+    <logger name="jdbc.sqlonly" level="ERROR"/>
+    <logger name="jdbc.audit" level="ERROR"/>
+    <logger name="jdbc.resultset" level="ERROR"/>
+    <logger name="jdbc.connection" level="ERROR"/>
+
+    <!--打印所有包的日志-->
+    <root level="info">
+        <appender-ref ref="stdout" />
+        <appender-ref ref="out" />
+    </root>
+
+<!--    <include resource="org/springframework/boot/logging/logback/base.xml"/>-->
+    <logger name="jdbc.connection" additivity="false" level="OFF">
+        <appender-ref ref="stdout" />
+        <appender-ref ref="out" />
+    </logger>
+    <logger name="jdbc.resultset" additivity="false" level="OFF">
+        <appender-ref ref="stdout" />
+        <appender-ref ref="out" />
+    </logger>
+    <logger name="jdbc.audit" additivity="false" level="OFF">
+        <appender-ref ref="stdout" />
+        <appender-ref ref="out" />
+    </logger>
+    <logger name="jdbc.sqlonly" additivity="false" level="INFO">
+        <appender-ref ref="stdout" />
+        <appender-ref ref="out" />
+    </logger>
+    <logger name="jdbc.sqltiming" additivity="false" level="OFF">
+        <appender-ref ref="stdout" />
+        <appender-ref ref="out" />
+    </logger>
+    <!--人脸服务-->
+    <logger name="com.loongdot.face.openvisual" level="INFO" additivity="false">
+        <appender-ref ref="stdout" />
+        <appender-ref ref="out" />
+    </logger>
+</configuration>
